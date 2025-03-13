@@ -9,22 +9,26 @@ Spillet handler om at finde @’et
 */
 
 Random random = new Random();
+
+// En tilfældig char bliver valgt ud fra denne string for hvert tegn på gridet
 string letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+int boardSize = 40;
 
 while (true)
 {
-
-    int xRow = random.Next(1, 41);
-    int zRow = random.Next(1, 41);
+    // Hvor befinder "@" tegnet sig logisk på brættet
+    int xRow = random.Next(1, boardSize + 1);
+    int zRow = random.Next(1, boardSize + 1);
 
     int difficultyNumber = DifficultyNumber();
 
     Console.Clear();
     Console.Write("*  ");
     Console.ForegroundColor = ConsoleColor.White;
-    for (int i = 1; i <= 40; i++)
+    for (int i = 1; i <= boardSize; i++)
     {
-        if (i < 10)
+        if (i < 10) // 2 cifrede tal fylder mere og derfor er alt under 10 givet en ekstra white space
         {
             Console.Write(i + "  ");
         }
@@ -34,7 +38,7 @@ while (true)
         }
     }
     Console.WriteLine("X -->");
-    for (int i = 1; i <= 40; i++)
+    for (int i = 1; i <= boardSize; i++)
     {
         Console.ForegroundColor = ConsoleColor.White;
         if (i < 10)
@@ -45,7 +49,7 @@ while (true)
         {
             Console.Write(i + " ");
         }
-        for (int j = 1; j <= 40; j++)
+        for (int j = 1; j <= boardSize; j++)
         {
             if (difficultyNumber >= 2)
             {
